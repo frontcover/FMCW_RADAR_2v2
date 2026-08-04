@@ -14,10 +14,10 @@ elif OS_TYPE == "windows":
 else:
     raise ValueError("OS_TYPE must be 'ubuntu' or 'windows'")
 
-TEST_MUX = 0 # generate mux internally to test the logic in the case of bypassing adf4158 muxout
+TEST_MUX = 0 # TEST_MUX = 0 ADF4158 generates muxout, TEST_MUX = 1 generate fake muxout to test the logic
 
 if TEST_MUX == 0:
-    SWEEP_TIME = 250e-6
+    SWEEP_TIME = 100e-6
     SWEEP_GAP  = 10e-6
 else:
     SWEEP_TIME = 250e-6
@@ -33,13 +33,13 @@ SAMPLING_FREQUENCY = 2_000_000
 NUMBER_OF_SAMPLES  = int(SAMPLING_FREQUENCY * SWEEP_TIME)
 
 SWEEP_START = 5.20e9
-SWEEP_BW    = 500e6
+SWEEP_BW    = 800e6
 
 GAIN             = 10
 SWEEP_TYPE       = 0
 DATA_LOG         = 0
-PA_MODE          = 1
-FIR_ENABLE       = 0
+PA_MODE          = 1 # 1 on off control, 0 always on
+FIR_ENABLE       = 1
 SEND_DATA_TYPE   = 1 # 1 adc, 0 test data
 ADC_RESOLUTION   = 12
 SAMPLE_AVERAGING = 1
@@ -51,7 +51,7 @@ TX_START_CHAR = b"C"
 
 def open_ftdi():
 
-    DEVICE_ID = "FTBJ7TCT"
+    DEVICE_ID = "FTB86W9B"
     DEVICE_INDEX = 0
 
     SYNCFF = 0x40

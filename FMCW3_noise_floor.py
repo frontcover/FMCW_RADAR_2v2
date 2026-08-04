@@ -6,7 +6,7 @@ import struct
 # SETTINGS
 # =========================================================
 
-FILENAME = "fmcw3_bin_files/400khz_200mhz.bin"
+FILENAME = "record.bin"#"fmcw3_bin_files/250khz_900mhz.bin"
 
 START_CHIRP = 0
 END_CHIRP = None
